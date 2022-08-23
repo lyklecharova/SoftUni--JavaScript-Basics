@@ -1,0 +1,41 @@
+function santaHoliday(input) {
+  let countDays = Number(input[0]); // for stay
+  let typeOfRoom = String(input[1]);
+  let grade = String(input[2]);
+
+  let nights = countDays - 1;
+  let result = 0;
+
+  switch (typeOfRoom) {
+    case "room for one person":
+      result = nights * 18;
+      break;
+    case "apartment":
+      result = nights * 25;
+      if (countDays < 10) {
+        result *= 0.7;
+      } else if (countDays >= 10 && countDays <= 15) {
+        result *= 0.65;
+      } else {
+        result *= 0.5;
+      }
+      break;
+    case "president apartment":
+      result = nights * 35;
+      if (countDays < 10) {
+        result *= 0.9;
+      } else if (countDays >= 10 && countDays <= 15) {
+        result *= 0.85;
+      } else {
+        result *= 0.8;
+      }
+      break;
+  }
+  if (grade === "positive") {
+    result *= 1.25;
+  } else {
+    result *= 0.9;
+  }
+  console.log(`${result.toFixed(2)}`);
+}
+santaHoliday(["2", "apartment", "positive"]);
